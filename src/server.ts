@@ -1,17 +1,11 @@
 import express from 'express';
+import { categires_routes } from './routes/categories.routes';
 
 const app = express();
 
 app.use(express.json());
 
-
-app.get('/', (request, responde) =>{
-    return responde.json({menssge:"Aplicação"})
-})
-
-app.post("/courses", (resquest, response) => {
-    const { name } = resquest.body;
-    return response.json({name});
-})
+app.use("/categories", categires_routes);
+app.use("/specifications", categires_routes);
 
 app.listen(3333, ()=> console.log("servidor rodando"));
